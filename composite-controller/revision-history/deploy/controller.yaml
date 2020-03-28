@@ -1,0 +1,24 @@
+apiVersion: metacontroller.k8s.io/v1alpha1
+kind: CompositeController
+metadata:
+  name: ping-pong-controller
+spec:
+  generateSelector: true
+  parentResource:
+    apiVersion: example.com/v1
+    resource: pings
+    revisionHistory:
+      fieldPaths:
+      - .spec.name
+      - .spec.email
+  childResources:
+  - apiVersion: example.com/v1
+    resource: pongs
+    updateStrategy:
+      method: InPlace
+  hooks:
+    sync:
+      webhook:
+        url: http://192.168.1.15:8080/sync
+        #url: http://hello-controller.hello/sync
+        #This URL should be reachable from meta controller pod
