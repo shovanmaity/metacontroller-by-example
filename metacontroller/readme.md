@@ -1,15 +1,8 @@
-1. Clone this repo 
+To install metacontroller follow the steps given below -
 ```bash
-git clone https://github.com/shovanmaity/metacontroller-by-example.git
-```
-2. Create `metacontroller` namespace
-```bash
-kubectl create ns metacontroller
-```
-
-3. Apply the artifacts
-```bash
-kubectl apply -f metacontroller/
+1. git clone https://github.com/shovanmaity/metacontroller-by-example.git
+2. kubectl create ns metacontroller
+3. kubectl apply -f metacontroller/
 ```
 
 Find more details [here](https://metacontroller.app/guide/install).
