@@ -13,7 +13,7 @@ class Controller(BaseHTTPRequestHandler):
           "name": parent["metadata"]["name"]
         },
         "spec": {
-          "message": "Hello %s" % name
+          "message": "Hello %s !!" % name
         }
       }
     ]

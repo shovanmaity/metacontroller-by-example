@@ -38,7 +38,7 @@ func sync(req *SyncRequest) (*SyncResponse, error) {
 				"name": req.Parent.GetName(),
 			},
 			"spec": map[string]interface{}{
-				"message": "Hello " + name,
+				"message": "Hello " + name + " !!",
 			},
 		},
 	}
