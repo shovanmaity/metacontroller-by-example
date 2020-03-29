@@ -11,14 +11,15 @@ app.post("/sync", (req, res) => {
     let desired = {children: []};
 
     try {
-        // observed ping object
+        // Observed ping object
         let ping = observed.parent;
-        let name
+        let name = "Unknown"
         try{
             name = ping.spec.name
         }catch(e){
-            name = "Unknown"
+            console.log(e.stack)
         }
+
         let pong =  {
             apiVersion: 'example.com/v1',
             kind: 'Pong',
@@ -29,12 +30,15 @@ app.post("/sync", (req, res) => {
                 message: "Hello "+ name +" !!"
             }
         }
+
         // Generate desired children
         desired.children = [
             pong
         ];
+
         res.status(200).send(desired)
     } catch (e) {
+        console.log(e.stack)
         res.status(500).send({body: e.stack})
     }
 });

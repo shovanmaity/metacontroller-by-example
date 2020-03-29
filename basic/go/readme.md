@@ -8,16 +8,16 @@ spec:
       webhook:
         url: http://192.168.1.15:8080/sync
 ```
-Apply the artifacts present in deploy folder.
+Apply the artifacts present in [deploy](https://github.com/shovanmaity/metacontroller-by-example/tree/master/basic/deploy) folder.
 ```bash
-kubectl apply -f crd.yaml
-kubectl apply -f controller.yaml
+kubectl delete -f https://raw.githubusercontent.com/shovanmaity/metacontroller-by-example/master/basic/deploy/controller.yaml
+kubectl delete -f https://raw.githubusercontent.com/shovanmaity/metacontroller-by-example/master/basic/deploy/crd.yaml
 ```
 Run the Go file
 ```bash
 go run sync.go
 ```
-Create a new ping. You can edit `ping.yaml` and apply that. One sample `Ping` is here.
+Create a new ping. You can edit `ping.yaml` and apply that. One sample `Ping` is [here](https://github.com/shovanmaity/metacontroller-by-example/blob/master/basic/deploy/ping.yaml).
 ```yaml
 apiVersion: example.com/v1
 kind: Ping
@@ -32,7 +32,8 @@ kubectl get pong -o yaml
 ``` 
 ### Cleanup
 ```bash
-1. Stop the go file execution.
-2. kubectl delete -f controller.yaml
-3. kubectl delete -f crd.yaml
+kubectl delete ping --all
+# Stop the go file execution.
+kubectl delete -f https://raw.githubusercontent.com/shovanmaity/metacontroller-by-example/master/basic/deploy/controller.yaml
+kubectl delete -f https://raw.githubusercontent.com/shovanmaity/metacontroller-by-example/master/basic/deploy/crd.yaml
 ```
