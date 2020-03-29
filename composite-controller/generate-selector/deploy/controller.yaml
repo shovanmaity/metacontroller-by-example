@@ -10,10 +10,8 @@ spec:
   - apiVersion: example.com/v1
     resource: pongs
     updateStrategy:
-      method: OnDelete
+      method: InPlace
   hooks:
     sync:
       webhook:
         url: http://192.168.1.15:8080/sync
-        #url: http://hello-controller.hello/sync
-        #This URL should be reachable from meta controller pod
