@@ -2,15 +2,21 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
 
 class Controller(BaseHTTPRequestHandler):
-  def sync(self, parent, children):
-    # Generate the desired child object.
-    name = parent.get("spec", {}).get("name","Unknown")
-    desired_ping_reply = [
+
+  def do_POST(self):
+
+    # Observed ping object
+    observed = json.loads(self.rfile.read(int(self.headers.get("content-length"))))
+    ping = observed["parent"]
+
+    name = ping.get("spec", {}).get("name","Unknown")
+
+    pong = [
       {
         "apiVersion": "example.com/v1",
         "kind": "Pong",
         "metadata": {
-          "name": parent["metadata"]["name"]
+          "name": ping["metadata"]["name"]
         },
         "spec": {
           "message": "Hello %s !!" % name
@@ -18,12 +24,11 @@ class Controller(BaseHTTPRequestHandler):
       }
     ]
 
-    return {"children": desired_ping_reply}
+    # Generate desired children
+    desired = {
+      "children": pong
+    }
 
-  def do_POST(self):
-    # Serve the sync() function as a JSON webhook.
-    observed = json.loads(self.rfile.read(int(self.headers.get("content-length"))))
-    desired = self.sync(observed["parent"], observed["children"])
     self.send_response(200)
     self.send_header("Content-type", "application/json")
     self.end_headers()
