@@ -13,7 +13,7 @@ class Controller(BaseHTTPRequestHandler):
           "name": parent["metadata"]["name"]
         },
         "spec": {
-          "message": "Hello %s" % name
+          "message": "Hello %s !!" % name
         }
       }
     ]
@@ -24,7 +24,6 @@ class Controller(BaseHTTPRequestHandler):
     # Serve the sync() function as a JSON webhook.
     observed = json.loads(self.rfile.read(int(self.headers.get("content-length"))))
     desired = self.sync(observed["parent"], observed["children"])
-
     self.send_response(200)
     self.send_header("Content-type", "application/json")
     self.end_headers()
