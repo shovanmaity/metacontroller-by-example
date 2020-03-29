@@ -1,6 +1,6 @@
 Make sure metacontroller is [installed](https://github.com/shovanmaity/metacontroller-by-example/tree/master/metacontroller).
 
-Edit the deploy/controller.yaml and update it with your IP
+Edit the deploy/controller.yaml and update the URL.
 ```yaml
 spec:
   hooks:
