@@ -13,10 +13,10 @@ Common step -
 Update URL in the [controller](https://github.com/shovanmaity/metacontroller-by-example/blob/master/composite-controller/generate-selector/deploy/controller.yaml) in deploy folder.
 ```yaml
 spec:
-    hooks:
-        sync:
-            webhook:
-                url: http://192.168.1.15:8080/sync
+  hooks:
+    sync:
+      webhook:
+        url: http://192.168.1.15:8080/sync
 ```
 Apply the artifacts
 ```bash
@@ -35,7 +35,7 @@ Try
 - To create some more `Pong` with same label (which label selector present in `Ping`)
 - Comment out bellow lines in python script any re run it.
     ```python
-        # Comment out below 3 lines to try with other option
+    # Comment out below 3 lines to try with other option
     for name, observed_pong in observed_pong_map.items():
       if name != ping["metadata"]["name"]:
         desired.append(observed_pong)
@@ -43,8 +43,8 @@ Try
 - Check the status of ping object
     ```yaml
         status:
-            observedGeneration: 9511
-            replicas: 2
+          observedGeneration: 9511
+          replicas: 2
     ```
 ---
 If you set spec.generateSelector to true in your CompositeController definition, Metacontroller will do the following:
@@ -59,16 +59,16 @@ Hope you cleaned up previously applied artifacts
 Update URL in the [controller](https://github.com/shovanmaity/metacontroller-by-example/blob/master/composite-controller/generate-selector/deploy/controller.yaml) in deploy folder.
 ```yaml
 spec:
-    hooks:
-        sync:
-            webhook:
-                url: http://192.168.1.15:8080/sync
+  hooks:
+    sync:
+      webhook:
+        url: http://192.168.1.15:8080/sync
 ```
 
 And add the below in controller.yaml
 ```yaml
 spec:
-    generateSelector: true
+  generateSelector: true
 ```
 Apply the artifacts
 ```bash
@@ -78,9 +78,9 @@ kubectl apply -f deploy/controller.yaml
 ```
 Comment out bellow lines in python script any re run it.
 ```python
-    # Comment out below 3 lines to try with other option
+# Comment out below 3 lines to try with other option
 for name, observed_pong in observed_pong_map.items():
-    if name != ping["metadata"]["name"]:
+  if name != ping["metadata"]["name"]:
     desired.append(observed_pong)
 ```
 Execute python file

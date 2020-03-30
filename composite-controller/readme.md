@@ -1,0 +1,7 @@
+  1. [Example of generate-selector.](https://github.com/shovanmaity/metacontroller-by-example/tree/master/composite-controller/generate-selector)
+  2. [Example of revision-history.](https://github.com/shovanmaity/metacontroller-by-example/tree/master/composite-controller/revision-history)
+  3. [Example of update-strategy-inplace.](https://github.com/shovanmaity/metacontroller-by-example/tree/master/composite-controller/update-strategy-inplace)
+  4. [Example of update-strategy-ondelete.](https://github.com/shovanmaity/metacontroller-by-example/tree/master/composite-controller/update-strategy-ondelete)
+  5. [Example of update-strategy-recreate.](https://github.com/shovanmaity/metacontroller-by-example/tree/master/composite-controller/update-strategy-recreate)
+  6. [Example of update-strategy-rolling-recreate.](https://github.com/shovanmaity/metacontroller-by-example/tree/master/composite-controller/update-strategy-rolling-recreate)
+  7. [Example of update-strategy-rolling-inplace.](https://github.com/shovanmaity/metacontroller-by-example/tree/master/composite-controller/update-strategy-rolling-inplace)
