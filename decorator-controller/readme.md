@@ -1,0 +1,5 @@
+1. [Example of update-strategy-inplace.](https://github.com/shovanmaity/metacontroller-by-example/tree/master/decorator-controller/update-strategy-inplace)
+2. [Example of update-strategy-ondelete.](https://github.com/shovanmaity/metacontroller-by-example/tree/master/decorator-controller/update-strategy-ondelete)
+3. [Example of update-strategy-recreate.](https://github.com/shovanmaity/metacontroller-by-example/tree/master/decorator-controller/update-strategy-recreate)
+4. [Example of label-selector.](https://github.com/shovanmaity/metacontroller-by-example/tree/master/decorator-controller/label-selector)
+5. [Example of annotation-selector.](https://github.com/shovanmaity/metacontroller-by-example/tree/master/decorator-controller/annotation-selector)
