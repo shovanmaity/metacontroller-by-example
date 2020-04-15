@@ -1,6 +1,8 @@
 Make sure metacontroller is [installed](https://github.com/shovanmaity/metacontroller-by-example/tree/master/metacontroller).
 
-Edit the deploy/controller.yaml and update the URL.
+Make sure you are inside `basic/go` directory.
+
+Edit the `../deploy/controller.yaml` file and update the webhook URL.
 ```yaml
 spec:
   hooks:
@@ -10,8 +12,8 @@ spec:
 ```
 Apply the artifacts present in [deploy](https://github.com/shovanmaity/metacontroller-by-example/tree/master/basic/deploy) folder.
 ```bash
-kubectl delete -f https://raw.githubusercontent.com/shovanmaity/metacontroller-by-example/master/basic/deploy/controller.yaml
-kubectl delete -f https://raw.githubusercontent.com/shovanmaity/metacontroller-by-example/master/basic/deploy/crd.yaml
+kubectl apply -f ../deploy/controller.yaml
+kubectl apply -f ../deploy/crd.yaml
 ```
 Run the Go file
 ```bash
@@ -22,7 +24,7 @@ Create a new ping. You can edit `ping.yaml` and apply that. One sample `Ping` is
 apiVersion: example.com/v1
 kind: Ping
 metadata:
-  name: shovan-maity
+  name: shovan
 spec:
   name: Shovan Maity
 ```
@@ -33,7 +35,7 @@ kubectl get pong -o yaml
 ### Cleanup
 ```bash
 kubectl delete ping --all
+kubectl delete -f ../deploy/controller.yaml
+kubectl delete -f ../deploy/crd.yaml
 # Stop the go file execution.
-kubectl delete -f https://raw.githubusercontent.com/shovanmaity/metacontroller-by-example/master/basic/deploy/controller.yaml
-kubectl delete -f https://raw.githubusercontent.com/shovanmaity/metacontroller-by-example/master/basic/deploy/crd.yaml
 ```

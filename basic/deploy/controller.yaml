@@ -8,12 +8,11 @@ spec:
     apiVersion: example.com/v1
     resource: pings
   childResources:
-  - apiVersion: example.com/v1
-    resource: pongs
-    updateStrategy:
-      method: Recreate
+    - apiVersion: example.com/v1
+      resource: pongs
+      updateStrategy:
+        method: Recreate
   hooks:
     sync:
       webhook:
         url: http://192.168.1.15:8080/sync
-
