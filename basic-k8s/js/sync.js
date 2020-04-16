@@ -8,26 +8,26 @@ app.use(bodyParser.json())
 
 app.post("/sync", (req, res) => {
     let observed = req.body;
-    let desired = {children: []};
+    let desired = { children: [] };
 
     try {
         // Observed ping object
         let ping = observed.parent;
         let name = "Unknown"
-        try{
+        try {
             name = ping.spec.name
-        }catch(e){
+        } catch (e) {
             console.log(e.stack)
         }
 
-        let pong =  {
+        let pong = {
             apiVersion: 'example.com/v1',
             kind: 'Pong',
             metadata: {
                 name: ping.metadata.name
             },
             spec: {
-                message: "Hello "+ name +" !!"
+                message: "Hello " + name + " !!"
             }
         }
 
@@ -39,7 +39,7 @@ app.post("/sync", (req, res) => {
         res.status(200).send(desired)
     } catch (e) {
         console.log(e.stack)
-        res.status(500).send({body: e.stack})
+        res.status(500).send({ body: e.stack })
     }
 });
 
