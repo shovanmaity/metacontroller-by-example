@@ -19,7 +19,7 @@ Run the python file
 ```bash
 python3 sync.py
 ```
-Create a new ping. Find the sample `Ping` is [here](https://github.com/shovanmaity/metacontroller-by-example/blob/master/basic/deploy/ping.yaml).
+Create a ping cr. Find the sample `Ping` is [here](https://github.com/shovanmaity/metacontroller-by-example/blob/master/basic/deploy/ping.yaml).
 ```bash
 cat <<EOF | kubectl apply -f -
 apiVersion: example.com/v1

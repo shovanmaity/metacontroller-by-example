@@ -12,7 +12,7 @@ kubectl apply -f controller.yaml
 ```
 Wait for controller pod to come in running state.
 
-Create a new ping. Find the sample `Ping` is [here](https://github.com/shovanmaity/metacontroller-by-example/blob/master/basic-k8s/deploy/ping.yaml).
+Create a ping cr. Find the sample `Ping` is [here](https://github.com/shovanmaity/metacontroller-by-example/blob/master/basic-k8s/deploy/ping.yaml).
 ```bash
 cat <<EOF | kubectl apply -f -
 apiVersion: example.com/v1
