@@ -28,13 +28,13 @@ metadata:
 spec:
   name: Shovan Maity
 ```
-Check `Pong` is created or not and validate the `spec.message`
+Check `Pong` is created or not and validate the `spec.message`. `Pong` cr will be created in the same namespace in which `Ping` cr is present.
 ```bash
-kubectl get pong -o yaml
+kubectl get pong -A -o yaml
 ``` 
 ### Cleanup
 ```bash
-kubectl delete ping --all
+kubectl delete ping -A --all
 kubectl delete -f ../deploy/controller.yaml
 kubectl delete -f ../deploy/crd.yaml
 # Stop the python file execution.

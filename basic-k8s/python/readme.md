@@ -6,10 +6,12 @@ Apply the crd and controller present in `deploy` folder.
 ```bash
 kubectl apply -f ../deploy/crd.yaml
 ```
-Apply the controller for `Ping`
+Apply the controller for `Ping`. I am deploying it in `metacontroller` namespace. You can deploy it in any namespace. For that, you have to edit `controller.yaml`.
 ```bash
 kubectl apply -f controller.yaml
 ```
+Wait for controller pod to come in running state.
+
 Create a new ping. You can edit `ping.yaml` and apply that. One sample `Ping` is [here](https://github.com/shovanmaity/metacontroller-by-example/blob/master/basic/deploy/ping.yaml).
 ```yaml
 apiVersion: example.com/v1
@@ -19,13 +21,13 @@ metadata:
 spec:
   name: Shovan Maity
 ```
-Check `Pong` is created or not and validate the `spec.message`
+Check `Pong` is created or not and validate the `spec.message`. `Pong` cr will be created in the same namespace in which `Ping` cr is present.
 ```bash
-kubectl get pong -o yaml
+kubectl get pong -A -o yaml
 ```
 ### Cleanup
 ```bash
-kubectl delete ping --all
+kubectl delete ping -A --all
 kubectl delete -f controller.yaml
 kubectl delete -f ../deploy/crd.yaml
 ```
