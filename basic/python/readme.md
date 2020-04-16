@@ -10,7 +10,7 @@ spec:
       webhook:
         url: http://192.168.1.15:8080/sync
 ```
-Apply the artifacts present in [deploy](https://github.com/shovanmaity/metacontroller-by-example/tree/master/basic/deploy) folder.
+Apply the crd and controller present in `deploy` folder.
 ```bash
 kubectl apply -f ../deploy/controller.yaml
 kubectl apply -f ../deploy/crd.yaml

@@ -2,11 +2,11 @@ Make sure metacontroller is [installed](https://github.com/shovanmaity/metacontr
 
 Make sure you are inside `basic-k8s/js` directory.
 
-Apply the crd present in [deploy](https://github.com/shovanmaity/metacontroller-by-example/tree/master/basic-k8s/deploy) folder.
+Apply the crd present in `deploy` folder.
 ```bash
 kubectl apply -f ../deploy/crd.yaml
 ```
-Apply the [controller](https://github.com/shovanmaity/metacontroller-by-example/blob/master/basic-k8s/js/controller.yaml) for `Ping`
+Apply the controller  for `Ping`
 ```bash
 kubectl apply -f controller.yaml
 ```
