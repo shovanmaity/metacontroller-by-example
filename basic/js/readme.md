@@ -20,14 +20,16 @@ Update dependency and run the js file
 npm install
 node sync.js
 ```
-Create a new ping. You can edit `ping.yaml` and apply that. One sample `Ping` is [here](https://github.com/shovanmaity/metacontroller-by-example/blob/master/basic/deploy/ping.yaml).
-```yaml
+Create a new ping. Find the sample `Ping` is [here](https://github.com/shovanmaity/metacontroller-by-example/blob/master/basic/deploy/ping.yaml).
+```bash
+cat <<EOF | kubectl apply -f -
 apiVersion: example.com/v1
 kind: Ping
 metadata:
   name: shovan
 spec:
   name: Shovan Maity
+EOF
 ```
 Check `Pong` is created or not and validate the `spec.message`. `Pong` cr will be created in the same namespace in which `Ping` cr is present.
 ```bash
