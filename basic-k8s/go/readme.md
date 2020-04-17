@@ -1,15 +1,21 @@
+### Prerequisite
+
 Make sure metacontroller is [installed](https://github.com/shovanmaity/metacontroller-by-example/tree/master/metacontroller).
 
 Make sure you are inside `basic-k8s/go` directory.
+
+### Do it yourself
 
 Apply the crd present in `deploy` folder.
 ```bash
 kubectl apply -f ../deploy/crd.yaml
 ```
+
 Apply the controller for `Ping`. I am deploying it in `metacontroller` namespace. You can deploy it in any namespace. For that, you have to edit `controller.yaml`.
 ```bash
 kubectl apply -f controller.yaml
 ```
+
 Wait for controller pod to come in running state.
 
 Create a ping cr. Find the sample `Ping` is [here](https://github.com/shovanmaity/metacontroller-by-example/blob/master/basic-k8s/deploy/ping.yaml).
@@ -23,12 +29,15 @@ spec:
   name: Shovan Maity
 EOF
 ```
+
 Check `Pong` is created or not and validate the `spec.message`. `Pong` cr will be created in the same namespace in which `Ping` cr is present.
 ```bash
 kubectl get pong -A
 kubectl get pong -A -o=jsonpath='{range .items[*]}{@.spec.message}{"\n"}{end}'
 ```
+
 ### Cleanup
+
 ```bash
 kubectl delete ping -A --all
 kubectl delete -f controller.yaml

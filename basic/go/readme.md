@@ -1,6 +1,10 @@
+### Prerequisite
+
 Make sure metacontroller is [installed](https://github.com/shovanmaity/metacontroller-by-example/tree/master/metacontroller).
 
 Make sure you are inside `basic/go` directory.
+
+### Do it yourself
 
 Edit the `../deploy/controller.yaml` file and update the webhook URL.
 ```yaml
@@ -10,15 +14,18 @@ spec:
       webhook:
         url: http://192.168.1.15:8080/sync
 ```
+
 Apply the crd and controller present in `deploy` folder.
 ```bash
 kubectl apply -f ../deploy/controller.yaml
 kubectl apply -f ../deploy/crd.yaml
 ```
+
 Run the Go file
 ```bash
 go run sync.go
 ```
+
 Create a ping cr. Find the sample `Ping` is [here](https://github.com/shovanmaity/metacontroller-by-example/blob/master/basic/deploy/ping.yaml).
 ```bash
 cat <<EOF | kubectl apply -f -
@@ -30,12 +37,15 @@ spec:
   name: Shovan Maity
 EOF
 ```
+
 Check `Pong` is created or not and validate the `spec.message`. `Pong` cr will be created in the same namespace in which `Ping` cr is present.
 ```bash
 kubectl get pong -A
 kubectl get pong -A -o=jsonpath='{range .items[*]}{@.spec.message}{"\n"}{end}'
 ``` 
+
 ### Cleanup
+
 ```bash
 kubectl delete ping -A --all
 kubectl delete -f ../deploy/controller.yaml
