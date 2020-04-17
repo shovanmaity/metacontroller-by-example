@@ -7,9 +7,6 @@ spec:
   parentResource:
     apiVersion: example.com/v1
     resource: pings
-    revisionHistory:
-      fieldPaths:
-        - spec.name
   childResources:
     - apiVersion: example.com/v1
       resource: pongs

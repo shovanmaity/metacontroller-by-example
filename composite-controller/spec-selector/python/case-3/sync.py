@@ -12,27 +12,30 @@ class Controller(BaseHTTPRequestHandler):
         ping = observed["parent"]
 
         name = ping.get("spec", {}).get("name", "Unknown")
-        email = ping.get("spec", {}).get("email", "Unknown")
 
-        pong = [
-            {
-                "apiVersion": "example.com/v1",
-                "kind": "Pong",
-                "metadata": {
+        pong = {
+            "apiVersion": "example.com/v1",
+            "kind": "Pong",
+            "metadata": {
+                "name": ping["metadata"]["name"],
+                "labels": {
                     "name": ping["metadata"]["name"]
-                },
-                "spec": {
-                    "message": "Hello %s, your email address is %s" % (name, email)
-                },
-                "status": {
-                    "state": "online"
                 }
+            },
+            "spec": {
+                "message": "Hello %s !!" % name
             }
-        ]
+        }
+
+        desired_children = []
+        desired_children.append(pong)
 
         # Generate desired children
         desired = {
-            "children": pong
+            "children": desired_children,
+            "status": {
+                "replicas": len(desired_children)
+            }
         }
 
         self.send_response(200)
