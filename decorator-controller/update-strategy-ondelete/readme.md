@@ -1,6 +1,10 @@
-Metacontroller allows define upgrade strategy for chieldren. For `OnDelete` - It will not update existing children unless they get deleted by some other agent.
+Make sure metacontroller is [installed](https://github.com/shovanmaity/metacontroller-by-example/tree/master/metacontroller).
 
-Update URL in the [controller](https://github.com/shovanmaity/metacontroller-by-example/blob/master/decorator-controller/update-strategy-ondelete/deploy/controller.yaml) in deploy folder.
+Make sure you are inside `decorator-controller/update-strategy-ondelete` directory.
+
+Metacontroller allows define upgrade strategy for chieldren. For `OnDelete` - it does not update existing children unless they get deleted by some other agent.
+
+Edit the `deploy/controller.yaml` file and update the webhook URL.
 ```yaml
 spec:
   hooks:
@@ -8,9 +12,8 @@ spec:
       webhook:
         url: http://192.168.1.15:8080/sync
 ```
-Apply the artifacts
+Apply the crd and controller.
 ```bash
-# make sure you are in metacontroller-by-example/decorator-controller/update-strategy-ondelete this directory.
 kubectl apply -f deploy/crd.yaml
 kubectl apply -f deploy/controller.yaml
 ```
@@ -18,9 +21,27 @@ Execute python file
 ```bash
 python3 python/sync.py
 ```
-Sample `Ping` is [here](https://github.com/shovanmaity/metacontroller-by-example/blob/master/decorator-controller/update-strategy-ondelete/deploy/ping.yaml).
+Create a ping cr. Find the sample `Ping` is [here](https://github.com/shovanmaity/metacontroller-by-example/blob/master/decorator-controller/update-strategy-ondelete/deploy/ping.yaml).
+```bash
+cat <<EOF | kubectl apply -f -
+apiVersion: example.com/v1
+kind: Ping
+metadata:
+  name: shovan
+spec:
+  name: Shovan Maity
+EOF
+```
 
-Try
+Try the below processes -
 
-- Edit the ping and change the `spec.name` then check the pong object it's message should not contain updated name.
+- Edit the ping and change the `spec.name` then check the pong object it's message should not contain updated name. Get the message using `kubectl get pong -o=jsonpath='{range .items[*]}{@.spec.message}{"\n"}{end}'`.
 - Delete the pong object then check the pong object it's message should contain updated name.
+
+### Cleanup
+```bash
+kubectl delete ping -A --all
+kubectl delete -f deploy/controller.yaml
+kubectl delete -f deploy/crd.yaml
+# Stop the python file execution.
+```
