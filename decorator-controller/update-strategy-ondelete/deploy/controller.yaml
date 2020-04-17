@@ -4,13 +4,13 @@ metadata:
   name: ping-pong-controller
 spec:
   resources:
-  - apiVersion: example.com/v1
-    resource: pings
+    - apiVersion: example.com/v1
+      resource: pings
   attachments:
-  - apiVersion: example.com/v1
-    resource: pongs
-    updateStrategy:
-      method: OnDelete
+    - apiVersion: example.com/v1
+      resource: pongs
+      updateStrategy:
+        method: OnDelete
   hooks:
     sync:
       webhook:

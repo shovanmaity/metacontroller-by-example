@@ -14,7 +14,6 @@ spec:
 ```
 Apply the crd and controller.
 ```bash
-# make sure you are in metacontroller-by-example/composite-controller/update-strategy-recreate this directory.
 kubectl apply -f deploy/crd.yaml
 kubectl apply -f deploy/controller.yaml
 ```

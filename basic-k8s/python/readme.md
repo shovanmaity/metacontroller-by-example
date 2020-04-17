@@ -23,9 +23,10 @@ spec:
   name: Shovan Maity
 EOF
 ```
-Check `Pong` is created or not and validate the `spec.message` using `kubectl get pong -A -o=jsonpath='{range .items[*]}{@.spec.message}{"\n"}{end}'`. `Pong` cr will be created in the same namespace in which `Ping` cr is present.
+Check `Pong` is created or not and validate the `spec.message`. `Pong` cr will be created in the same namespace in which `Ping` cr is present.
 ```bash
-kubectl get pong -A -o yaml
+kubectl get pong -A
+kubectl get pong -A -o=jsonpath='{range .items[*]}{@.spec.message}{"\n"}{end}'
 ```
 ### Cleanup
 ```bash

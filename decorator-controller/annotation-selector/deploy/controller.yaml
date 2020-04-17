@@ -4,19 +4,16 @@ metadata:
   name: ping-pong-controller
 spec:
   resources:
-  - apiVersion: example.com/v1
-    resource: pings
-    annotationSelector:
-      matchAnnotations:
-        include: "true"
-      #matchExpressions:
-      #- key: include
-        #operator: Exists
+    - apiVersion: example.com/v1
+      resource: pings
+      annotationSelector:
+        matchAnnotations:
+          include: "true"
   attachments:
-  - apiVersion: example.com/v1
-    resource: pongs
-    updateStrategy:
-      method: InPlace
+    - apiVersion: example.com/v1
+      resource: pongs
+      updateStrategy:
+        method: InPlace
   hooks:
     sync:
       webhook:
