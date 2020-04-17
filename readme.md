@@ -3,6 +3,7 @@
 - [Create basic controller in different languages and run them in Kubernetes environment.](https://github.com/shovanmaity/metacontroller-by-example/tree/master/basic-k8s)
 - [Composite controller](https://github.com/shovanmaity/metacontroller-by-example/tree/master/composite-controller)
   - [Example of generate-selector.](https://github.com/shovanmaity/metacontroller-by-example/tree/master/composite-controller/generate-selector)
+  - [Example of spec-selector.](https://github.com/shovanmaity/metacontroller-by-example/tree/master/composite-controller/spec-selector)
   - [Example of update-strategy-inplace.](https://github.com/shovanmaity/metacontroller-by-example/tree/master/composite-controller/update-strategy-inplace)
   - [Example of update-strategy-ondelete.](https://github.com/shovanmaity/metacontroller-by-example/tree/master/composite-controller/update-strategy-ondelete)
   - [Example of update-strategy-recreate.](https://github.com/shovanmaity/metacontroller-by-example/tree/master/composite-controller/update-strategy-recreate)

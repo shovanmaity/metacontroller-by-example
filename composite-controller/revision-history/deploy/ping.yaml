@@ -1,10 +1,9 @@
 apiVersion: example.com/v1
 kind: Ping
 metadata:
-  name: shovan-maity
+  name: shovan
   labels:
     name: shovan-maity
 spec:
   name: Shovan Maity
   email: shovan.cse91@gmail.com
-
