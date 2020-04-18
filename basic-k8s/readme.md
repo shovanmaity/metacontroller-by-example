@@ -1,8 +1,8 @@
 ### Overview
 
-In this section, we will discuss on how we can run these controllers in the Kubernetes environment. If meta-controller is not installed then you need to [install](https://github.com/shovanmaity/metacontroller-by-example/tree/master/metacontroller) it.
+In this section, I will discuss on how you can run these controllers in the Kubernetes environment. If meta-controller is not installed then you need to [install](https://github.com/shovanmaity/metacontroller-by-example/tree/master/metacontroller) it.
 
-In these examples we will use 2 crd `Ping` and `Pong`. For custom resource `Ping` we will create a controller. In `Ping` cr we will provide name and other details. Controller will create a `Pong` resource for each `Ping` in which we can find a greeting message with the details.
+In these examples I will use 2 crds `Ping` and `Pong`. For custom resource `Ping` I will create a controller. `Ping` cr will contain name and other details. Controller will create a `Pong` resource for each `Ping`. In `Pong` cr you can find a greeting message.
 
 ### Example Controller
 - [Go](https://github.com/shovanmaity/metacontroller-by-example/tree/master/basic-k8s/go)
