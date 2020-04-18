@@ -1,0 +1,6 @@
+apiVersion: example.com/v1
+kind: Ping
+metadata:
+  name: shovan
+spec:
+  name: Shovan Maity
