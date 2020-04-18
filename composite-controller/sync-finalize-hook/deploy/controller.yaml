@@ -1,0 +1,22 @@
+apiVersion: metacontroller.k8s.io/v1alpha1
+kind: CompositeController
+metadata:
+  name: ping-pong-controller
+spec:
+  generateSelector: true
+  parentResource:
+    apiVersion: example.com/v1
+    resource: pings
+  childResources:
+    - apiVersion: example.com/v1
+      resource: pongs
+      updateStrategy:
+        method: InPlace
+  resyncPeriodSeconds: 10
+  hooks:
+    sync:
+      webhook:
+        url: http://192.168.1.15:8080/sync
+    finalize:
+      webhook:
+        url: http://192.168.1.15:9090/sync
