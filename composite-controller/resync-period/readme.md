@@ -39,9 +39,7 @@ spec:
 EOF
 ```
 
-Try the below processes -
-
-- Check the logs of python file execution.
+Check the logs of python file execution.
 
 ### Cleanup
 

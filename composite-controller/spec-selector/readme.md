@@ -75,7 +75,10 @@ Execute python file.
 python3 python/case-1/sync.py
 ```
 
-Check for pong cr `kubectl get pong -A`. You will not find any pong as we are not setting label in pong cr in python code `case-1/sync.py`.
+Check for pong cr. You will not find any pong as we are not setting label in pong cr in python code `case-1/sync.py`.
+```bash
+kubectl get pong -A
+```
 
 ### Case-2
 
@@ -84,7 +87,10 @@ Stop the python file execution and execute another python file
 python3 python/case-2/sync.py
 ```
 
-Check for pong cr `kubectl get pong -A`. You will find one pong.
+Check for pong cr. You will find one pong.
+```bash
+kubectl get pong -A
+```
 
 Run the below command and saw the output
 ```
@@ -113,7 +119,10 @@ kubectl get pong -A -o=jsonpath='{range .items[*]}{@.metadata.ownerReferences}{"
 kubectl get ping -A -o=jsonpath='{range .items[*]}{@.status.replicas}{"\n"}{end}'
 ```
 
-Remove the label from newly created pong cr `kubectl label pong shovan-tmp name-`.
+Remove the label from newly created pong cr
+```bash
+kubectl label pong shovan-tmp name-
+```
 
 Run the below command and saw the output
 ```
@@ -121,7 +130,10 @@ kubectl get pong -A -o=jsonpath='{range .items[*]}{@.metadata.ownerReferences}{"
 kubectl get ping -A -o=jsonpath='{range .items[*]}{@.status.replicas}{"\n"}{end}'
 ```
 
-Delete the new pong cr `kubectl delete pong shovan-tmp`.
+Delete the new pong cr
+```bash
+kubectl delete pong shovan-tmp
+```
 
 ### Case-3
 
@@ -130,9 +142,15 @@ Stop the python file execution and execute another python file
 python3 python/case-3/sync.py
 ```
 
-Check the pong cr `kubectl get pong -A`
+Check the pong cr
+```bash
+kubectl get pong -A
+```
 
-Check the ping cr's replicas `kubectl get ping -A -o=jsonpath='{range .items[*]}{@.status.replicas}{"\n"}{end}'`
+Check the ping cr's replicas
+```bash
+kubectl get ping -A -o=jsonpath='{range .items[*]}{@.status.replicas}{"\n"}{end}'
+```
 
 Create a new pong with same label
 ```bash
@@ -149,7 +167,10 @@ spec:
 EOF
 ```
 
-Check the ping cr's replicas `kubectl get ping -A -o=jsonpath='{range .items[*]}{@.status.replicas}{"\n"}{end}'`
+Check the ping cr's replicas
+```bash
+kubectl get ping -A -o=jsonpath='{range .items[*]}{@.status.replicas}{"\n"}{end}'
+```
 
 It will be 1, newly created pong cr will be deleted as python code in `case-3/ping.py` declines to list that cr.
 

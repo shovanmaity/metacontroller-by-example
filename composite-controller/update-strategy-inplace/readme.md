@@ -8,6 +8,8 @@ Make sure metacontroller is [installed](https://github.com/shovanmaity/metacontr
 
 Make sure you are inside `composite-controller/update-strategy-inplace` directory.
 
+### Do it yourself
+
 Edit the `deploy/controller.yaml` file and update the webhook URL.
 ```yaml
 spec:
@@ -40,10 +42,15 @@ spec:
 EOF
 ```
 
-Try the below processes -
+Get the `metadata.uid` of the pong cr.
+```bash
+kubectl get pong -o=jsonpath='{range .items[*]}{@.metadata.uid}{"\n"}{end}'
+```
 
-- Get the `metadata.uid` of the pong object using `kubectl get pong -o=jsonpath='{range .items[*]}{@.metadata.uid}{"\n"}{end}'`.
-- Edit the ping and change the `spec.name` then check `metadata.uid` of the pong object it should be same and message should contain updated name. Get the message using `kubectl get pong -o=jsonpath='{range .items[*]}{@.spec.message}{"\n"}{end}'`.
+Edit the ping and change the `spec.name` then check `metadata.uid` of the pong cr. It should be same and message should contain updated name.
+```bash
+kubectl get pong -o=jsonpath='{range .items[*]}{@.spec.message}{"\n"}{end}'
+```
 
 ### Cleanup
 

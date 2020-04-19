@@ -15,7 +15,7 @@ spec:
         url: http://192.168.1.15:8080/sync
 ```
 
-Apply the crd and controller present in `deploy` folder.
+Apply the crd and controller.
 ```bash
 kubectl apply -f ../deploy/controller.yaml
 kubectl apply -f ../deploy/crd.yaml
@@ -38,7 +38,7 @@ spec:
 EOF
 ```
 
-Check `Pong` is created or not and validate the `spec.message`. `Pong` cr will be created in the same namespace in which `Ping` cr is present.
+Check the `Pong` cr and validate the message. `Pong` cr will be created in the same namespace in which `Ping` cr is present.
 ```bash
 kubectl get pong -A
 kubectl get pong -A -o=jsonpath='{range .items[*]}{@.spec.message}{"\n"}{end}'

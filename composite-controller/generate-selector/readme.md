@@ -13,11 +13,6 @@ Make sure you are inside `composite-controller/generate-selector` directory.
 
 ### Do it yourself
 
-Apply the crd.
-```bash
-kubectl apply -f deploy/crd.yaml
-```
-
 ### Case-1
 
 Edit the `deploy/case-1/controller.yaml` file and update the URL.
@@ -32,6 +27,11 @@ spec:
 Apply the controller.
 ```bash
 kubectl apply -f deploy/case-1/controller.yaml
+```
+
+Apply the crd.
+```bash
+kubectl apply -f deploy/crd.yaml
 ```
 
 Create a ping cr using -
@@ -75,6 +75,11 @@ spec:
 Apply the controller.
 ```bash
 kubectl apply -f deploy/case-2/controller.yaml
+```
+
+Apply the crd.
+```bash
+kubectl apply -f deploy/crd.yaml
 ```
 
 Create a ping cr using -
