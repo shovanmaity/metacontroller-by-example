@@ -42,12 +42,24 @@ spec:
 EOF
 ```
 
-Try
+Get pong and there will be no pong.
+```bash
+kubectl get pong -A
+```
 
-- Get pong and there will be no pong. Then annotate the ping object according to your controller.
-- Now get pong object you will be able to get a pong cr.
-- Remove the annotation in the ping cr and then edit it(`.spec.name`) changes will not be reflected in the pong cr.
-- Add the annotation back and the adit the ping object(`.spec.name`) changes will be reflected in the pong cr.
+Annotate the ping object.
+```bash
+kubectl annotate ping include="true" -A --all
+```
+
+Now get pong cr you will be able to get a pong cr.
+```bash
+kubectl get pong -A
+```
+
+Remove the annotation in the ping cr and then edit it`.spec.name` changes will not be reflected in the pong cr.
+
+Add the annotation back and the adit the ping object`.spec.name` changes will be reflected in the pong cr.
 
 ### Cleanup
 

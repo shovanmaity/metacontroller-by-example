@@ -42,12 +42,24 @@ spec:
 EOF
 ```
 
-Try
+Get pong and there will be no pong cr.
+```bash
+kubectl get pong -A
+```
 
-- Get pong and there will be no pong. Then label the ping cr according to your controller file.
-- Now Get pong cr you will be able to get a pong cr.
-- Remove the label in the ping cr and then edit it(`.spec.name`) changes will not be reflected in the pong cr.
-- Add the label back and the adit the ping cr(`.spec.name`) changes will be reflected in the pong cr.
+Label the ping cr.
+```bash
+kubectl label ping include="true" -A --all
+```
+
+Now get pong cr you will be able to get a pong cr.
+```bash
+kubectl get pong -A
+```
+
+Remove the label in the ping cr and then edit it`.spec.name` changes will not be reflected in the pong cr.
+
+Add the label back and the adit the ping cr`.spec.name` changes will be reflected in the pong cr.
 
 ### Cleanup
 

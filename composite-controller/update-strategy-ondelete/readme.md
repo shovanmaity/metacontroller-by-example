@@ -2,11 +2,13 @@
 
 Metacontroller allows define upgrade strategy for chieldren. For `OnDelete` - it does not update existing children unless they get deleted by some other agent.
 
-Make sure metacontroller is [installed](https://github.com/shovanmaity/metacontroller-by-example/tree/master/metacontroller).
-
 ### Prerequisite
 
+Make sure metacontroller is [installed](https://github.com/shovanmaity/metacontroller-by-example/tree/master/metacontroller).
+
 Make sure you are inside `composite-controller/update-strategy-ondelete` directory.
+
+### Do it yourself
 
 Edit the `deploy/controller.yaml` file and update the webhook URL.
 ```yaml
@@ -16,8 +18,6 @@ spec:
       webhook:
         url: http://192.168.1.15:8080/sync
 ```
-
-### Do it yourself
 
 Apply the crd and controller.
 ```bash
@@ -42,10 +42,12 @@ spec:
 EOF
 ```
 
-Try the below processes -
+Edit the ping and change the `spec.name` then check the pong object it's message should not contain updated name
+```bash
+kubectl get pong -o=jsonpath='{range .items[*]}{@.spec.message}{"\n"}{end}'
+```
 
-- Edit the ping and change the `spec.name` then check the pong object it's message should not contain updated name. Get the message using `kubectl get pong -o=jsonpath='{range .items[*]}{@.spec.message}{"\n"}{end}'`.
-- Delete the pong object then check the pong object it's message should contain updated name.
+Delete the pong object then check the pong object it's message should contain updated name.
 
 ### Cleanup
 

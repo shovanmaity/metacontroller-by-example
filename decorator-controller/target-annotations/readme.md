@@ -1,5 +1,6 @@
 ### Concept
 
+A map of key-value pairs for annotations to set on the target object. You can specify this in the response of sync hook.
 
 ### Prerequisite
 
@@ -41,7 +42,7 @@ spec:
 EOF
 ```
 
-Check the status of ping cr -
+Check the status of ping cr
 ```yaml
 kubectl get ping -A -o=jsonpath='{range .items[*]}{@.metadata.annotations}{"\n"}{end}'
 ```

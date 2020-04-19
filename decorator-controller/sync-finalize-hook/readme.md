@@ -75,11 +75,20 @@ spec:
 EOF
 ```
 
-Try the below processes -
+Get the `metadata.finalizers` of the ping cr.
+```bash
+kubectl get ping -o=jsonpath='{range .items[*]}{@.metadata.finalizers}{"\n"}{end}'
+```
 
-- Get the `metadata.finalizers` of the ping cr using `kubectl get ping -o=jsonpath='{range .items[*]}{@.metadata.finalizers}{"\n"}{end}'`.
-- Delete the `Ping` cr using `kubectl delete ping -A --all`.
-- List `Pong` cr using `kubectl get ping -A`.
+Delete the `Ping` cr.
+```bash
+kubectl delete ping -A --all
+```
+
+List `Pong` cr.
+```bash
+kubectl get ping -A
+```
 
 ### Cleanup
 

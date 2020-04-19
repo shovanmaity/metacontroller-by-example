@@ -42,10 +42,12 @@ spec:
 EOF
 ```
 
-Try the below processes -
+Edit the ping and change the `spec.name` then check the pong object it's message should not contain updated name.
+```bash
+kubectl get pong -o=jsonpath='{range .items[*]}{@.spec.message}{"\n"}{end}'
+```
 
-- Edit the ping and change the `spec.name` then check the pong object it's message should not contain updated name. Get the message using `kubectl get pong -o=jsonpath='{range .items[*]}{@.spec.message}{"\n"}{end}'`.
-- Delete the pong object then check the pong object it's message should contain updated name.
+Delete the pong object then check the pong object it's message should contain updated name.
 
 ### Cleanup
 
